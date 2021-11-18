@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run -e CI=true shaharboro/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "dicker0react"
+  env: "Dicker0react-env"
+  bucket_name: "elasticbeanstalk-us-west-2-414935755761"
+  bucket_path: "dicker0react"
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure : "$AWS_SECRET_KEY"
