@@ -1,7 +1,9 @@
 sudo : required
 services:
   - docker
-
+branches:
+  only:
+    - master
 before_install:
   - docker build  -t shaharboro/docker-react -f Dockerfile-dev .
 
